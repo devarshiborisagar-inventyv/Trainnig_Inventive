@@ -1,0 +1,8 @@
+.clean-input {
+    width: 400px;          /* increase width */
+    border: none;          /* remove border */
+    outline: none;         /* remove blue focus outline */    /* spacing inside */
+    font-size: 16px;
+    background: transparent;
+    color: chartreuse;
+}

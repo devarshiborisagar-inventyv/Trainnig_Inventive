@@ -1,0 +1,6 @@
+<div>
+@for(res of responses ; track res){
+  <p>{{res}}</p>
+}
+$<input type="text" (keyup.enter)="onEnterPressed(inputField.value)" value="{{command}}" #inputField class="clean-input" placeholder="Type here..." />
+</div>
