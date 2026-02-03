@@ -1,0 +1,26 @@
+<div class="cart-container">
+
+  <p class="cart-title"> Total Items: {{ childComponent?.totalItem()  }}</p>
+
+  <div class="cart-scroll">
+    <mat-card class="cart-card" *ngFor="let product of products()">
+
+      <mat-card-header>
+        <mat-card-title>{{ product.name }}</mat-card-title>
+      </mat-card-header>
+    <img mat-card-image [src]="product.imgUrl" style="width: 200px; height: 200px;" alt="Image description">
+      <mat-card-content>
+        <p>Price: ₹{{ product.price }}</p>
+      </mat-card-content>
+
+      <mat-card-actions align="end">
+        <button mat-raised-button color="primary" (click)="addItemToCart(product)">
+          ADD TO CART
+        </button>
+      </mat-card-actions>
+
+    </mat-card>
+  </div>
+
+</div>
+<app-child></app-child>

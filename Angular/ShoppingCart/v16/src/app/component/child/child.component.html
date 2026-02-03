@@ -1,0 +1,43 @@
+<h1 style="margin: auto; text-align: center;">CART</h1>
+
+<div class="cart-container">
+
+  <div class="cart-scroll">
+    <mat-card class="cart-card" *ngFor="let cartItem of cart">
+
+      <mat-card-header>
+        <mat-card-title>{{ cartItem.product.name }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Price: ₹{{ cartItem.product.price }}</p>
+      </mat-card-content>
+      
+        <mat-card-content>
+        <p>Quentity:{{ cartItem.quentity }}</p>
+      </mat-card-content>
+
+       <mat-card-content>
+        <p>Total Price: ₹{{ cartItem.totalItemPrice }}</p>
+      </mat-card-content>
+
+
+
+      <mat-card-actions align="end">
+        <button mat-raised-button color="primary" (click)="addItemToCart(cartItem.product)">
+          +
+        </button>
+        <button mat-raised-button color="primary" (click)="removeItemToCart(cartItem.product)">
+          -
+        </button>
+      </mat-card-actions>
+
+
+     
+
+    </mat-card>
+  </div>
+   <mat-card-content>
+        <p>Total: ₹{{ grandTotal }}</p>
+      </mat-card-content>
+</div>
+
