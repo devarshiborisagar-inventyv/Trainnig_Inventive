@@ -1,0 +1,28 @@
+<mat-card class="example-card" [ngClass]="{'toggle-true':userStatus() , 'toggle-false':!userStatus()}" appearance="outlined">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Username:{{childUname()}}</mat-card-title>
+    <mat-card-title>Age:{{age()}}</mat-card-title>
+    <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+  </mat-card-header>
+
+  <img mat-card-image
+       [src]="imgUrl()"
+       alt="Photo of a Shiba Inu">
+
+
+  
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Ex. Pizza" value="Sushi" [ngModel]="childUname()"  (ngModelChange)="handleInComponentChange($event)" >
+  </mat-form-field>
+  
+
+<mat-button-toggle-group aria-label="Toggle Status">
+  <mat-button-toggle [value]="true" (click)="handleToggle(true)">Enable</mat-button-toggle>
+  <mat-button-toggle [value]="false" (click)="handleToggle(false)">Disable</mat-button-toggle>
+</mat-button-toggle-group>
+
+<p>Current Status: {{ userStatus() }}</p>
+
+
+</mat-card>

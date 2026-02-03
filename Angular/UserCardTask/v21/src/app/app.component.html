@@ -1,0 +1,8 @@
+<h2>Parent Component</h2>
+
+<p>User Status:{{userStatus()}}</p>
+<input matInput placeholder="" value="Dev" [ngModel]="uname()" (ngModelChange)="uname.set($event)" #input>
+
+
+<h2>Child Component</h2>
+<app-child [username]="uname()" (statusChanged)="statusChangedTriggerd($event)" (signalChange)="uname.set($event)"></app-child>
