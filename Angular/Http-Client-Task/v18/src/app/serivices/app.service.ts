@@ -35,25 +35,16 @@ export class AppService {
   userdata:any; 
 
   getToken(){
-      this.http.post<Response>('https://dummyjson.com/auth/login', {
+     return this.http.post<Response>('https://dummyjson.com/auth/login', {
       username: 'emilys',
       password: 'emilyspass',
       expiresInMins: 30
-    }).subscribe((res:Response)=>{
-      this.token=res.accessToken;
-      console.log(this.token);
-      localStorage.setItem('token',this.token);
-      return this.token;
     });
 
-    return this.token;
   }
 
   getUser(){
-    this.http.get<Response>('https://dummyjson.com/auth/me').subscribe((res)=>{
-      console.log(res)
-      this.userdata=res;
-    });
+    return this.http.get<Response>('https://dummyjson.com/auth/me');
   } 
 
 }

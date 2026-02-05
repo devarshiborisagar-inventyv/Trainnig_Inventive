@@ -2,6 +2,18 @@ import { Component, inject } from '@angular/core';
 import { AppService } from './serivices/app.service';
 import { JsonPipe } from '@angular/common';
 
+interface Response{
+  id:number,
+  username: string,
+  email: string,
+  firstName: string,
+  lastName: string,
+  gender: string,
+  image: string,
+  accessToken: string, // JWT accessToken (for backward compatibility) in response and cookies
+  refreshToken: string // refreshToken in response and cookies
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,21 +26,24 @@ export class AppComponent {
 
   authService=inject(AppService);
 
-  res="Loading...";
+  token="Loading...";
 
   userData:any;
 
   ngOnInit(){
-    this.res=this.authService.getToken();
+   this.authService.getToken().subscribe((res:Response)=>{
+      this.token=res.accessToken;
+      console.log(this.token);
+      localStorage.setItem('token',this.token);
+      return this.token;
+    });
   }
-  ngDoCheck(){
-    this.res=this.authService.token;
-    this.userData=this.authService.userdata;
-  }
-
   getUser(){
     
-  this.authService.getUser();
+    this.authService.getUser().subscribe((res)=>{
+      console.log(res)
+      this.userData=res;
+    });;
 
   }
 
