@@ -1,0 +1,8 @@
+<p>Token:</p>
+ @if(token | async; as res1){
+    <p>{{res1.accessToken}}</p>
+ }
+
+<button (click)="getUser()">Get User</button>
+
+<p>{{authService.userdata() | json}}</p>
